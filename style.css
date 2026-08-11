@@ -1,21 +1,20 @@
-/* ========== فونت‌های جدید ========== */
 @font-face {
     font-family: 'Sahel';
-    src: url('assets/fonts/SAHEL.TTF');
+    src: url('fonts/SAHEL.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'koodak';
-    src: url('assets/fonts/B\ KOODAK\ BOLD_P30DOWNLOAD.COM.TTF');
+    src: url('fonts/koodak.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Casc';
-    src: url('assets/fonts/CASCADIACODE.TTF');
+    src: url('fonts/CASCADIACODE.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -23,13 +22,12 @@
 
 @font-face {
     font-family: 'SahelBold';
-    src: url('assets/fonts/SAHEL-BLACK-FD.TTF');
+    src: url('fonts/SAHEL-BLACK-FD.TTF');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
-/* استفاده از فونت‌ها برای بخش‌های مختلف */
 body {
     font-family: 'Sahel', 'Inter', sans-serif;
 }
@@ -42,7 +40,6 @@ code, pre, .skill-tag, .project-tech span {
     font-family: 'Casc', monospace;
 }
 
-/* بقیه استایل‌ها مثل قبل باقی می‌مانند */
 * {
     margin: 0;
     padding: 0;
@@ -73,7 +70,6 @@ body {
     padding: 0 20px;
 }
 
-/* ========== هدر و ناوبری ========== */
 .header {
     position: fixed;
     top: 0;
@@ -139,7 +135,6 @@ body {
     transition: 0.3s;
 }
 
-/* ========== Hero Section ========== */
 .hero {
     padding: 120px 0 80px;
     background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
@@ -283,7 +278,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* ========== بخش مهارت‌ها ========== */
 .skills-section, .featured-projects, .education-section {
     padding: 80px 0;
 }
@@ -363,7 +357,6 @@ body {
     font-size: 0.8rem;
 }
 
-/* ========== پروژه‌های برجسته ========== */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -431,7 +424,6 @@ body {
     gap: 5px;
 }
 
-/* ========== دو ستون تحصیلات ========== */
 .two-columns {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -490,7 +482,6 @@ body {
     border-bottom: 1px solid #E5E7EB;
 }
 
-/* ========== فوتر ========== */
 .footer {
     background: var(--primary);
     color: white;
@@ -521,7 +512,6 @@ body {
     font-size: 0.8rem;
 }
 
-/* ========== صفحه نمونه کارها ========== */
 .portfolio-header {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
@@ -609,7 +599,6 @@ body {
     margin-top: 0.5rem;
 }
 
-/* ========== صفحه جزئیات پروژه (مقاله) ========== */
 .project-detail-page {
     padding: 120px 0 60px;
 }
@@ -706,7 +695,6 @@ body {
     background: var(--secondary);
 }
 
-/* مودال */
 .modal {
     display: none;
     position: fixed;
