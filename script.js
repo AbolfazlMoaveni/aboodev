@@ -151,11 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const textArray = [
         "لیسانس مهندسی کامپیوتر گرایش نرم‌افزار",
         "متخصص در شبکه و Routing",
-        "توسعه‌دهنده فول‌استک (#PHP, Python, C)",
-        "متخصص OCR هوشمند با FastAPI",
         "طراح گرافیک و تایپوگرافی حرفه‌ای",
         "علاقه‌مند به LLM، LangChain و NLP",
-        "خلاق تجربه‌های دیجیتال",
         "دارای گواهینامه Network+"
     ];
     
