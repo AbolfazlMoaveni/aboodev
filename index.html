@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ابوالفضل معاونی | مهندس کامپیوتر و طراح گرافیک</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* استایل‌های overlay */
+        .project-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .project-overlay.active {
+            display: flex;
+        }
+        .overlay-content {
+            background: var(--bg-secondary, #fff);
+            color: var(--text-primary, #111);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+        .dark-mode .overlay-content {
+            background: #1e1e2f;
+            color: #e0e0e0;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .overlay-close {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+            background: inherit;
+            padding: 0.5rem 0;
+            z-index: 5;
+        }
+        .overlay-close a {
+            background: var(--bg-primary, #eee);
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-primary, #111);
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            transition: 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1.8;
+        }
+        .overlay-close a:hover {
+            background: var(--accent-color, #6c63ff);
+            color: #fff;
+        }
+        .overlay-content h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+        .overlay-content .project-date {
+            color: var(--text-muted, #777);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .overlay-content h2 {
+            font-size: 1.4rem;
+            margin: 1.8rem 0 0.5rem;
+            border-right: 4px solid var(--accent-color, #6c63ff);
+            padding-right: 0.8rem;
+        }
+        .overlay-content ul {
+            padding-right: 1.5rem;
+            list-style: disc;
+        }
+        .overlay-content ul li {
+            margin-bottom: 0.4rem;
+        }
+        /* استایل دکمه بازگشت داخل overlay - هماهنگ با project-link */
+        .back-overlay-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            color: var(--accent-color, #6c63ff);
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border: 2px solid var(--accent-color, #6c63ff);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .back-overlay-link:hover {
+            background: var(--accent-color, #6c63ff);
+            color: #fff;
+            transform: scale(0.97);
+        }
+        .back-overlay-link i {
+            margin-left: 0.5rem;
+        }
+        .project-gallery {
+            display: none;
+        }
+        .project-video video {
+            max-width: 100%;
+            border-radius: 16px;
+            margin: 1rem 0;
+        }
+        /* استایل project-link برای overlay-trigger - دقیقا مثل لینک معمولی */
+        .project-link.overlay-trigger {
+            background: transparent;
+            border: none;
+            color: var(--accent-color, #6c63ff);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .project-link.overlay-trigger:hover {
+            color: var(--accent-hover, #5a52d5);
+            transform: translateX(-4px);
+        }
+        .project-link.overlay-trigger i {
+            transition: 0.2s;
+        }
+        .project-link.overlay-trigger:hover i {
+            transform: translateX(-4px);
+        }
+        @media (max-width: 600px) {
+            .overlay-content { padding: 1.5rem; }
+            .overlay-content h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر با منوی ناوبری -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/" class="logo">AbooDev<span class="logo-dot">.</span>ir</a>
+                <ul class="nav-menu">
+                    <li class="dark-mode-toggle">
+                        <button id="darkModeBtn" class="dark-mode-btn">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                    <li><a href="#head" class="nav-link active">خانه</a></li>
+                    <li><a href="#projects" class="nav-link">نمونه کارها</a></li>
+                    <li><a href="#contact" class="nav-link">تماس</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="head">
+        <!-- بخش Hero -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                        <img src="profile.jpg" alt="ابوالفضل معاونی" class="hero-img" />
+                        <div class="image-glow"></div>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-badge">سلام، من</div>
+                    <h1 class="hero-name">ابوالفضل معاونی</h1>
+                    <p class="hero-title">لیسانس مهندسی کامپیوتر | طراح گرافیک | فعال حوزه هوش مصنوعی</p>
+                    <div class="hero-desc">
+                        <span class="typed-text"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-outline">
+                            <i class="fas fa-download"></i> دانلود رزومه
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/AbolfazlMoaveni" class="social-icon"><i class="fab fa-github"></i></a>
+						<a href="https://www.linkedin.com/in/abolfazl-moaveni-614822246?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+						<a href="https://leetcode.com/u/AbolfazlMoaveni/" class="social-icon"><i class="fa-brands fa-leetcode"></i></a>
+						<a href="https://t.me/Abolfazl_2653" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش مهارت‌ها -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">تخصص‌های من</span>
+                    <h2 class="section-title">مهارت‌های حرفه‌ای</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <h3>توسعه وب و اپلیکیشن</h3>
+                        <div class="skill-items">
+                            <span>HTML/CSS</span> <span>Tailwind</span>
+                            <span>JavaScript</span> <span>TypeScript</span> <span>React (مقدماتی)</span> <span>React Native</span> <span>Expo</span> <span>PHP</span>
+                            <span>FastAPI</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        <h3>پایگاه داده</h3>
+                        <div class="skill-items">
+                            <span>MySQL</span> <span>MSSQL</span> <span>T-SQL</span> <span>NoSQL (redis)</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                        <h3>شبکه</h3>
+                        <div class="skill-items">
+                            <span>Network+</span> <span>Cisco PT</span> <span>Routing</span>
+                            <span>Wireshark (مقدماتی)</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-palette"></i></div>
+                        <h3>طراحی گرافیکی</h3>
+                        <div class="skill-items">
+                            <span>Photoshop</span> <span>MS Word</span> <span>MS PowerPoint</span> <span>MS Excel</span> <span>Figma (مقدماتی)</span>
+                            <span>Typography</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                        <h3>هوش مصنوعی</h3>
+                        <div class="skill-items">
+                            <span>OpenCV</span> <span>OCR</span> <span>NLP</span>
+                            <span>LangChain</span> <span>LLM</span> <span>LlamaIndex</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas fa-desktop"></i></div>
+                        <h3>توسعه اپلیکیشن دسکتاپ</h3>
+                        <div class="skill-items">
+                            <span>C# WFA</span> <span>C++</span>
+                            <span>Qt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش پروژه‌های برجسته -->
+        <section class="featured-projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">افتخارات من</span>
+                    <h2 class="section-title">پروژه‌های برجسته</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="projects-grid" id="projects">
+                    <!-- کارت پروژه 1: سامانه مدیریت رویدادها -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>سامانه مدیریت رویدادهای دانشگاهی</h3>
+                            <p>طراحی UI در Figma + پیاده‌سازی با PHP با رعایت امنیت (SQL Injection prevention)</p>
+                            <div class="project-tech">
+                                <span>Figma</span> <span>PHP</span> <span>MySQL</span>
+                            </div>
+                            <a href="#" class="project-link overlay-trigger" data-project="eventm">
+                                مشاهده جزئیات <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- کارت پروژه 2: OCR هوشمند -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>اپلیکیشن OCR هوشمند</h3>
+                            <p>تبدیل دست‌نویس به کد اجرایی با استفاده از FastAPI و مدل‌های Gemini، GPT، Tesseract، PaddleOCR</p>
+                            <div class="project-tech">
+                                <span>Python</span> <span>FastAPI</span> <span>OpenCV</span>
+                                <span>LLM</span>
+                            </div>
+                            <a href="#" class="project-link overlay-trigger" data-project="ocr">
+                                مشاهده جزئیات <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- کارت پروژه 3: طراحی گرافیکی (لینک خارجی) -->
+                    <div class="project-card">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-paintbrush"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>طراحی گرافیکی حرفه‌ای</h3>
+                            <p>بنر، پوستر، بروشور چاپی و وب - دارای نمونه تایپوگرافی و ویراستاری متون</p>
+                            <div class="project-tech">
+                                <span>Photoshop</span> <span>MS Word</span> <span>MS PowerPoint</span> <span>Photoshop</span> <span>Typography</span>
+                                <span>Print Design</span>
+                            </div>
+                            <a href="https://drive.google.com/drive/folders/1n0UoiVrRZJghOMXRCGNcUCwBKSv8ykm4" class="project-link" target="_blank">
+                                مشاهده نمونه‌کارها <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش تحصیلات و گواهی‌ها -->
+        <section class="education-section">
+            <div class="container">
+                <div class="two-columns">
+                    <div class="education-box">
+                        <div class="box-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>تحصیلات</h3>
+                        <div class="edu-item">
+                            <strong>کارشناسی مهندسی کامپیوتر | گرایش نرم‌افزار</strong>
+                            <p>دانشگاه صنعتی جندی شاپور | ۱۴۰۰ - ۱۴۰۵</p>
+                            <span class="grade">معدل: ۱۴.۷ از ۲۰</span>
+                        </div>
+                    </div>
+                    <div class="certificates-box">
+                        <div class="box-icon"><i class="fas fa-certificate"></i></div>
+                        <h3>گواهی‌ها</h3>
+                        <ul>
+                            <li>Network+ (فرادرس - عباس ولی‌زاده)</li>
+                            <li>NLP و LLM (در حال یادگیری)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay برای نمایش جزئیات پروژه -->
+    <div class="project-overlay" id="projectOverlay">
+        <div class="overlay-content" id="overlayContent">
+            <div class="overlay-close">
+                <a href="#" id="closeOverlayBtn"><i class="fas fa-times"></i></a>
+            </div>
+            <!-- محتوای داینامیک توسط جاوااسکریپت پر می‌شود -->
+            <div id="overlayBody"></div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>ابوالفضل معاونی</h3>
+                    <p>زیرساخت می‌سازم، رویا طراحی می‌کنم</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> ۰۹۰۳۵۹۸۲۶۵۳</p>
+                    <p><i class="fas fa-envelope"></i> abolfazlmoaveni.work@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        (function() {
+            // داده‌های پروژه‌ها (بدون تصاویر)
+            const projectsData = {
+                eventm: {
+                    title: 'سامانه مدیریت رویدادهای دانشگاهی',
+                    date: '۱۴۰۴ | پروژه دانشگاهی',
+                    body: `
+                        <h2>📋 توضیح پروژه</h2>
+                        <p>این پروژه یک سامانه کامل برای مدیریت رویدادهای دانشگاهی است که امکان ثبت‌نام، مدیریت سخنرانان، زمان‌بندی جلسات و صدور گواهی را فراهم می‌کند. طراحی UI در Figma انجام شده و backend با PHP خالص پیاده‌سازی شده است.</p>
+                        <h2>🛠 تکنولوژی‌های استفاده شده</h2>
+                        <ul>
+                            <li>PHP (backend خالص)</li>
+                            <li>MySQL (پایگاه داده)</li>
+                            <li>HTML5/CSS3 و TailwindCSS</li>
+                            <li>JavaScript (فرانت‌اند تعاملی)</li>
+                            <li>Figma (طراحی UI/UX)</li>
+                        </ul>
+                        <h2>🔒 ویژگی‌های امنیتی</h2>
+                        <ul>
+                            <li>جلوگیری از SQL Injection با استفاده از Prepared Statements</li>
+                            <li>XSS Protection</li>
+                            <li>CSRF Token</li>
+                            <li>هش کردن رمز عبور با bcrypt</li>
+                        </ul>
+                        <h2>🎯 قابلیت‌های اصلی</h2>
+                        <ul>
+                            <li>ثبت‌نام و ورود کاربران (دانشجو، استاد، ادمین)</li>
+                            <li>مدیریت رویدادها (ایجاد، ویرایش، حذف)</li>
+                            <li>سیستم رزرو صندلی</li>
+                            <li>دریافت گواهی شرکت در رویداد (PDF)</li>
+                            <li>داشبورد مدیریتی با گزارش‌های آماری</li>
+                        </ul>
+                        <a href="#" class="back-overlay-link" id="overlayBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به نمونه کارها</a>
+                    `
+                },
+                ocr: {
+                    title: 'اپلیکیشن OCR هوشمند',
+                    date: '۱۴۰۴ | پروژه کارشناسی',
+                    body: `
+                        <h2>📋 توضیح پروژه</h2>
+                        <p>این پروژه یک اپلیکیشن تحت وب است که می‌تواند دست‌نویس روی کاغذ یا تخته را خوانده و به کد اجرایی (Python، C++، JavaScript و ...) تبدیل کند. از تکنولوژی‌های پیشرفته OCR و هوش مصنوعی برای تشخیص دقیق استفاده شده است.</p>
+                        <h2>🛠 تکنولوژی‌های استفاده شده</h2>
+                        <ul>
+                            <li>Python + FastAPI (backend)</li>
+                            <li>OpenCV (پردازش تصویر)</li>
+                            <li>مدل‌های OCR: Tesseract، PaddleOCR، EasyOCR، TrOCR</li>
+                            <li>APIهای خارجی: Gemini، Groq، GPT، eboo</li>
+                            <li>React Native + Expo FrameWork + TypeScript (فرانت‌اند)</li>
+                        </ul>
+                        <h2>🎯 قابلیت‌های اصلی</h2>
+                        <ul>
+                            <li>تشخیص کدهای دست‌نویس</li>
+                            <li>تبدیل خودکار به کدهای برنامه‌نویسی قابل اجرا با پسوند مناسب</li>
+                            <li>پشتیبانی از چندین موتور OCR (امکان مقایسه)</li>
+                            <li>رابط کاربری ساده و سریع</li>
+                            <li>قابلیت دانلود کد بدست آمده</li>
+                        </ul>
+                        <div class="project-video">
+                            <style>.h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style><div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/iog7cf8/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+                        </div>
+                        <h2>نتایج و دستاوردها</h2>
+                        <p>این پروژه با دقت بالای ۹۵٪ در تشخیص دست‌نویس خوانا عمل می‌کند و به عنوان پروژه کارشناسی ارائه شده است. قابلیت ترکیب با مدل‌های زبانی بزرگ (LLM) برای بهبود خروجی نیز اضافه شده است.</p>
+                        <a href="#" class="back-overlay-link" id="overlayBackBtn"><i class="fas fa-arrow-right"></i> بازگشت به نمونه کارها</a>
+                    `
+                }
+            };
+
+            const overlay = document.getElementById('projectOverlay');
+            const overlayBody = document.getElementById('overlayBody');
+            const closeBtn = document.getElementById('closeOverlayBtn');
+
+            // باز کردن overlay با داده‌های پروژه
+            function openProject(projectKey) {
+                const data = projectsData[projectKey];
+                if (!data) return;
+                overlayBody.innerHTML = `
+                    <h1>${data.title}</h1>
+                    <span class="project-date">${data.date}</span>
+                    ${data.body}
+                `;
+                // اتصال مجدد دکمه بازگشت (که با کلاس back-overlay-link ساخته شده)
+                const backBtn = document.getElementById('overlayBackBtn');
+                if (backBtn) {
+                    backBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        closeOverlay();
+                    });
+                }
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // بستن overlay
+            function closeOverlay() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // رویداد برای دکمه‌های "مشاهده جزئیات" (حالا به صورت لینک)
+            document.querySelectorAll('.overlay-trigger').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const project = this.getAttribute('data-project');
+                    if (project) openProject(project);
+                });
+            });
+
+            // بستن با دکمه X (حالا لینک)
+            closeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeOverlay();
+            });
+
+            // بستن با کلیک روی پس‌زمینه overlay
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeOverlay();
+            });
+
+            // بستن با کلید Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeOverlay();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

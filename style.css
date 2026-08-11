@@ -1,0 +1,1012 @@
+/* ========== فونت‌های جدید ========== */
+@font-face {
+    font-family: 'Sahel';
+    src: url('assets/fonts/SAHEL.TTF');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'koodak';
+    src: url('assets/fonts/B\ KOODAK\ BOLD_P30DOWNLOAD.COM.TTF');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Casc';
+    src: url('assets/fonts/CASCADIACODE.TTF');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SahelBold';
+    src: url('assets/fonts/SAHEL-BLACK-FD.TTF');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* استفاده از فونت‌ها برای بخش‌های مختلف */
+body {
+    font-family: 'Sahel', 'Inter', sans-serif;
+}
+
+h1, h2, h3, .hero-name, .section-title, .logo {
+    font-family: 'SahelBold', 'Poppins', sans-serif;
+}
+
+code, pre, .skill-tag, .project-tech span {
+    font-family: 'Casc', monospace;
+}
+
+/* بقیه استایل‌ها مثل قبل باقی می‌مانند */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0A2540;
+    --secondary: #00A8FF;
+    --accent: #0066CC;
+    --dark: #1F2937;
+    --light: #F4F7FC;
+    --gray: #6B7280;
+    --white: #FFFFFF;
+    --shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    --shadow-lg: 0 20px 40px -15px rgba(0,0,0,0.15);
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark);
+    background: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== هدر و ناوبری ========== */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+.navbar {
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo-dot {
+    color: var(--secondary);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--secondary);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ========== Hero Section ========== */
+.hero {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 20px;
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--secondary);
+    position: relative;
+    z-index: 2;
+}
+
+.image-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, var(--secondary), transparent);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.hero-name {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.hero-title {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.hero-desc {
+    color: var(--gray);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.social-icon:hover {
+    background: var(--secondary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ========== بخش مهارت‌ها ========== */
+.skills-section, .featured-projects, .education-section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-tag {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.section-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    margin: 1rem auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    border: 1px solid #E5E7EB;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.skill-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skill-items span {
+    background: var(--light);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* ========== پروژه‌های برجسته ========== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.project-image-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.project-content p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-tech span {
+    background: var(--light);
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+}
+
+.project-link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* ========== دو ستون تحصیلات ========== */
+.two-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.education-box, .certificates-box {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.box-icon {
+    font-size: 2rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.education-box h3, .certificates-box h3 {
+    margin-bottom: 1rem;
+}
+
+.edu-item {
+    text-align: right;
+}
+
+.edu-item strong {
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.edu-item p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.grade {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.certificates-box ul {
+    list-style: none;
+    text-align: right;
+}
+
+.certificates-box li {
+    padding: 8px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* ========== فوتر ========== */
+.footer {
+    background: var(--primary);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+}
+
+/* ========== صفحه نمونه کارها ========== */
+.portfolio-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    text-align: center;
+    padding: 120px 0 60px;
+}
+
+.portfolio-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--primary);
+    background: transparent;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+.portfolio-grid {
+    padding: 40px 0 80px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-media img, .portfolio-media video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.portfolio-info {
+    padding: 1rem;
+}
+
+.portfolio-info h3 {
+    margin-bottom: 0.3rem;
+}
+
+.portfolio-info p {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.portfolio-category {
+    display: inline-block;
+    background: var(--light);
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+}
+
+/* ========== صفحه جزئیات پروژه (مقاله) ========== */
+.project-detail-page {
+    padding: 120px 0 60px;
+}
+
+.project-detail-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.project-detail-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 3rem;
+    text-align: center;
+}
+
+.project-detail-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-detail-header .project-date {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.project-detail-content {
+    padding: 3rem;
+}
+
+.project-detail-content h2 {
+    color: var(--primary);
+    margin: 1.5rem 0 1rem;
+}
+
+.project-detail-content h3 {
+    color: var(--secondary);
+    margin: 1rem 0 0.5rem;
+}
+
+.project-detail-content p {
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.project-gallery img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.02);
+}
+
+.project-video {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.project-video video {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 10px 25px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: var(--secondary);
+}
+
+/* مودال */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.modal-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* ========== تایپ رایتر افکت ========== */
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    min-height: 80px;
+}
+
+.static-text {
+    color: var(--gray);
+}
+
+.typed-text {
+    color: var(--secondary);
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--secondary);
+    margin-right: 2px;
+    animation: blink 0.7s infinite;
+    font-weight: normal;
+    color: var(--secondary);
+    -webkit-text-fill-color: var(--secondary);
+}
+
+/* ========== دکمه دارک مود ========== */
+.dark-mode-toggle {
+    list-style: none;
+    margin-right: 10px;
+}
+
+.dark-mode-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--dark);
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn:hover {
+    background: var(--light);
+    transform: rotate(15deg);
+}
+
+/* آیکون سان (خورشید) برای حالت دارک */
+body.dark-mode .dark-mode-btn i {
+    color: #FFD700;
+}
+
+body.dark-mode .dark-mode-btn i.fa-moon::before {
+    content: "\f185"; /* آیکون خورشید */
+}
+
+/* ========== دارک مود استایل‌ها ========== */
+body.dark-mode {
+    background: #121212;
+    color: #E0E0E0;
+}
+
+body.dark-mode .header {
+    background: rgba(18, 18, 18, 0.98);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+}
+body.dark-mode .nav-menu {
+    background: rgba(18, 18, 18, 0.98);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .nav-link {
+    color: #E0E0E0;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .nav-link.active {
+    color: var(--secondary);
+}
+
+body.dark-mode .logo {
+    color: white;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #121212 100%);
+}
+
+body.dark-mode .hero-desc,
+body.dark-mode .hero-title {
+    color: #CCCCCC;
+}
+
+body.dark-mode .hero-badge {
+    background: var(--secondary);
+    color: #121212;
+}
+
+body.dark-mode .skill-card,
+body.dark-mode .project-card,
+body.dark-mode .portfolio-card,
+body.dark-mode .education-box,
+body.dark-mode .certificates-box {
+    background: #1E1E1E;
+    border-color: #333;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .skill-card:hover,
+body.dark-mode .project-card:hover {
+    border-color: var(--secondary);
+}
+
+body.dark-mode .skill-items span,
+body.dark-mode .project-tech span {
+    background: #2D2D2D;
+    color: #DDD;
+}
+
+body.dark-mode .section-title,
+body.dark-mode .skill-card h3,
+body.dark-mode .project-content h3 {
+    color: white;
+}
+
+body.dark-mode .hero-name {
+    color: white;
+}
+
+body.dark-mode .about p,
+body.dark-mode .project-content p,
+body.dark-mode .portfolio-info p {
+    color: #BBBBBB;
+}
+
+body.dark-mode .footer {
+    background: #0A0A0A;
+}
+
+body.dark-mode .filter-btn {
+    border-color: var(--secondary);
+    color: #E0E0E0;
+}
+
+body.dark-mode .filter-btn:hover,
+body.dark-mode .filter-btn.active {
+    background: var(--secondary);
+    color: #121212;
+}
+
+body.dark-mode .social-icon {
+    background: #2D2D2D;
+    color: #E0E0E0;
+}
+
+body.dark-mode .social-icon:hover {
+    background: var(--secondary);
+    color: #121212;
+}
+
+body.dark-mode .btn-outline {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+body.dark-mode .btn-outline:hover {
+    background: var(--secondary);
+    color: #121212;
+}
+
+body.dark-mode .portfolio-header {
+    background: linear-gradient(135deg, #0A1620, #0A2540);
+}
+
+body.dark-mode .project-detail-container {
+    background: #1E1E1E;
+}
+
+body.dark-mode .project-detail-content p,
+body.dark-mode .project-detail-content li {
+    color: #CCCCCC;
+}
+
+body.dark-mode .project-detail-content h2 {
+    color: var(--secondary);
+}
+
+body.dark-mode .project-detail-content h3 {
+    color: white;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ========== ریسپانسیو ========== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .hero-name {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .projects-grid, .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .project-detail-content {
+        padding: 1.5rem;
+    }
+    
+    .hero-desc {
+        min-height: 120px;
+        font-size: 0.95rem;
+    }
+}
