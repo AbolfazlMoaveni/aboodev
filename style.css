@@ -1,20 +1,20 @@
 @font-face {
     font-family: 'Sahel';
-    src: url('fonts/SAHEL.TTF');
+    src: url('./fonts/SAHEL.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'koodak';
-    src: url('fonts/koodak.TTF');
+    src: url('./fonts/koodak.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Casc';
-    src: url('fonts/CASCADIACODE.TTF');
+    src: url('./fonts/CASCADIACODE.TTF');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
     font-family: 'SahelBold';
-    src: url('fonts/SAHEL-BLACK-FD.TTF');
+    src: url('./fonts/SAHEL-BLACK-FD.TTF');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
